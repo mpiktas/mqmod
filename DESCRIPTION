@@ -1,0 +1,15 @@
+Package: mqmod
+Title: tools for estimating moving quantile effects in time series models
+Description: mqmod is package which lets estimate and test the presence of
+    effects of moving quantiles in time series.
+URL: https://github.com/mpiktas/mqmod
+Version: 0.0.1
+Maintainer: Vaidotas Zemlys <zemlys@gmail.com>
+Author: Virmantas Kvedaras <virmantas.kvedaras@mif.vu.lt>, Vaidotas Zemlys
+    <vaidotas.zemlys@mif.vu.lt>
+Depends:
+    R (>= 2.11.0)
+License: MIT
+BugReports: https://github.com/mpiktas/mqmod/issues
+Collate:
+    'estimate.R'
