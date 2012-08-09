@@ -45,10 +45,11 @@ summary.mq <- function(object,...) {
 forecast.mq <- function(object,h) {
     fc <- numeric(h)
     xlag <- tail(object$x,object$k)
+    class(object) <- "lm"
     row <- object$model[1,-1,drop=FALSE]
     for(i in 1:h) {
-        row[1,] <- quantile(xlag,probs=object$quant)
-        fc[i] <- predict(object,newdata=row)
+        row[1,] <- quantile(xlag,probs=object$quant)        
+        fc[i] <- predict.lm(object,newdata=row)
         xlag <- c(xlag[-1],fc[i])
     }
     fc <- ts(fc,start=end(lag(object$x,-1)),frequency=frequency(object$x))
