@@ -1,0 +1,3 @@
+S3method(summary,mq)
+export(forecast.mq)
+export(mq)

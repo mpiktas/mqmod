@@ -2,7 +2,7 @@
 \alias{summary.mq}
 \title{Summarising moving quantile effect model fit}
 \usage{
-  summary.mq(object, ...)
+  \method{summary}{mq} (object, ...)
 }
 \arguments{
   \item{object}{an object of class \code{mq}, usually, a

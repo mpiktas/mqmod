@@ -7,6 +7,7 @@
 ##' @param xreg  additional regressors, not supported
 ##' @return mq object
 ##' @author Vaidotas Zemlys
+##' @export
 mq <- function(x,k,quant=c(1,0.75,0.25,0),xreg=NULL) {
     yX <- lapply(0:k,function(i)lag(x,-i))
     yX <- do.call("ts.intersect",yX)
@@ -17,7 +18,7 @@ mq <- function(x,k,quant=c(1,0.75,0.25,0),xreg=NULL) {
     res$x <- x
     res$k <- k
     res$quant <- quant
-    class(res) <- c("mq")
+    class(res) <- c(class(res),"mq")
     res
 }
 ##' Summarising moving quantile effect model fit
@@ -27,8 +28,9 @@ mq <- function(x,k,quant=c(1,0.75,0.25,0),xreg=NULL) {
 ##' @param ... additional arguments to \code{\link{summary.lm}}
 ##' @return A \code{\link{summary.lm}} object.
 ##' @author Vaidotas Zemlys
-summary.mq <- function(object,...) {
-    class(object) <- "lm"
+##' @method summary mq
+##' @export
+summary.mq <- function(object,...) {  
     summary.lm(object,...)
 }
 
@@ -42,6 +44,7 @@ summary.mq <- function(object,...) {
 ##' \item{x}{the original data series}
 ##' \item{full}{original data series combined with the forecast}
 ##' @author Vaidotas Zemlys
+##' @export
 forecast.mq <- function(object,h) {
     fc <- numeric(h)
     xlag <- tail(object$x,object$k)
